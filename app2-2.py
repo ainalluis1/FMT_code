@@ -11,7 +11,7 @@ import gzip
 
 @st.cache_resource
 def load_model():
-    filename = "models/best_model_et.pkl.gz"  # ruta relativa dentro del repo
+    filename = "best_model_et.pkl.gz"  # ruta relativa dentro del repo
 
     with gzip.open(filename, 'rb') as f:
         model = joblib.load(f)
