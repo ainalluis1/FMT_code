@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import joblib
 
 # Cargar el modelo
 @st.cache_resource
