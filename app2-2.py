@@ -4,16 +4,19 @@ import joblib
 import os
 import requests
 # Cargar el modelo
+import streamlit as st
+import pandas as pd
+import joblib
+import gzip
+
 @st.cache_resource
 def load_model():
-    url = "https://drive.google.com/file/d/1t0KzanVs5d6X1Esfwl_CAW-IuLJi5Reb/view?usp=share_link"
-    filename = "best_model_et.pkl"
+    filename = "models/best_model_et.pkl.gz"  # ruta relativa dentro del repo
 
-    if not os.path.exists(filename):
-        with open(filename, "wb") as f:
-            f.write(requests.get(url).content)
+    with gzip.open(filename, 'rb') as f:
+        model = joblib.load(f)
 
-    return joblib.load(filename)
+    return model
 
 model = load_model()
 
