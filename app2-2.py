@@ -1,14 +1,22 @@
 import streamlit as st
 import pandas as pd
 import joblib
-
+import os
 
 # Cargar el modelo
 @st.cache_resource
 def load_model():
-    return joblib.load("best_model_et.pkl")
+    url = "https://drive.google.com/file/d/1t0KzanVs5d6X1Esfwl_CAW-IuLJi5Reb/view?usp=share_link"
+    filename = "best_model_et.pkl"
+
+    if not os.path.exists(filename):
+        with open(filename, "wb") as f:
+            f.write(requests.get(url).content)
+
+    return joblib.load(filename)
 
 model = load_model()
+
 
 
 feature_names = ['unique_session_count_cumulative_y', 'user_lifetime_purchase_count', 'days_since_previous_purchase', 'user_lifetime_event_count', 'purchase_value', 'cumulative_product_id_count', 'purchase_repeat_product%']
