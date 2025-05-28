@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
-
+import requests
 # Cargar el modelo
 @st.cache_resource
 def load_model():
