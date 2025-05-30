@@ -5,6 +5,7 @@ import gzip
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 # Page setup
 st.set_page_config(page_title="Customer Churn Prediction", layout="centered")
